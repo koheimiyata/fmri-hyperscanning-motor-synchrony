@@ -13,7 +13,6 @@ The corresponding fMRI dataset is available on OpenNeuro.
 - `first_eigenvariate.m` (included in `Functions/`)
 - `r_to_zfisher.m` (included in `Functions/`)
 - `predict_behavior.m` (included in `Functions/`)
-- `fdr_bh.m` (included in `Functions/`)
 
 ---
 
