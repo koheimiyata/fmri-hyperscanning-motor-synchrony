@@ -9,7 +9,7 @@ The corresponding fMRI dataset is available on OpenNeuro.
 
 - [SPM12](https://www.fil.ion.ucl.ac.uk/spm/software/spm12/) or later (analyses were conducted with SPM25)
 - [fMRIPrep](https://fmriprep.org/) v21+
-- MATLAB R2020b or later
+- MATLAB R2024b or later
 - `first_eigenvariate.m` (included in `Functions/`)
 - `r_to_zfisher.m` (included in `Functions/`)
 - `predict_behavior.m` (included in `Functions/`)
@@ -36,7 +36,8 @@ The scripts assume the following directory structure:
     ├── Mfile/                     # Analysis scripts (this repository)
     │   └── Functions/             # Helper functions
     ├── ROI_temp/                  # ROI mask files (e.g., Shen268)
-    └── SPM_temp/                  # SPM batch template .mat files
+    ├── SPM_temp/                  # SPM batch template .mat files
+    └── batch/                     # Saved SPM batch files
 ```
 
 Each participant pair has its own folder under `Analysis/`:
