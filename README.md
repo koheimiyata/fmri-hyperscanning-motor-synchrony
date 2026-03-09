@@ -85,8 +85,8 @@ Scripts are prefixed with a letter indicating the analysis stage and should be r
 
 | Script | Description |
 |--------|-------------|
-| `G1_FLevel_GLM.m` | Build and run SPM first-level GLM with task and nuisance regressors (FAST autocorrelation) |
-| `G2_CManager.m` | Run SPM Contrast Manager for each subject |
+| `G1_FLevel_GLM.m` | Build and run SPM first-level GLM with task and nuisance regressors |
+| `G2_CManager.m` | Run SPM Contrast Manager for each participant |
 | `G3_SLevel_GLM.m` | Run SPM second-level one-sample t-test for each contrast |
 
 ---
