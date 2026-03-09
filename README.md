@@ -79,7 +79,7 @@ Scripts are prefixed with a letter indicating the analysis stage and should be r
 | `C2_ResidT2F.m` | Concatenate SPM residuals (Res_*.nii) into 4D NIfTI files per run |
 | `C3_ConMatrix_Shen268.m` | Compute intra- and inter-brain ROI-to-ROI connectivity matrices using Shen 268 atlas |
 | `C4_Permutation_CPM.m` | Run CPM with leave-one-out cross-validation to predict behavioral scores |
-| `C5_SummarizeMatrix_0011.m` | Summarize CPM positive-mask edges at the canonical network level |
+| `C5_SummarizeMatrix.m` | Summarize CPM positive-mask edges at the canonical network level |
 
 ### G — GLM Analysis
 
@@ -105,7 +105,7 @@ C1_FLevel_CPM
   → C2_ResidT2F
   → C3_ConMatrix_Shen268
   → C4_Permutation_CPM
-  → C5_SummarizeMatrix_0011
+  → C5_SummarizeMatrix
 
 [GLM analysis]
 G1_FLevel_GLM
