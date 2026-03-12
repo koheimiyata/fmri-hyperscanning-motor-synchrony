@@ -157,12 +157,13 @@ If you use this code, please cite:
 
 This code is partially based on:
 
-> Finn ES, Shen X, Scheinost D, Rosenberg MD, Huang J, Chun MM, Papademetris X & Constable RT. (2015). Functional connectome fingerprinting: Identifying individuals using patterns of brain connectivity. *Nature Neuroscience*, 18, 1664–1671.
+> Shen X, Finn ES, Scheinost D, Rosenberg MD, Chun MM, Papademetris X & Constable RT. (2017). Using connectome-based predictive modeling to 
+predict individual behavior from brain connectivity. *Nature Protocols*, 12, 3, 506–518.
 
 ---
 
 ## License
 
 This code is released under the GNU General Public License v2 (GPL v2),
-consistent with the CPM code by Finn & Shen (2015) on which portions of
+consistent with the CPM code by Shen et al. (2017) on which portions of
 this work are based (see `C4_Permutation_CPM.m` and `Functions/predict_behavior.m`).
