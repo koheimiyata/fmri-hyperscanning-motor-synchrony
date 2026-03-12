@@ -68,4 +68,5 @@ for ps = 1:p_end % pairs
         spm_jobman('run', matlabbatch); % Run matlabbatch
 
     end % subjects
+    msg = sprintf('Data of %s was processed', pair); disp(msg);
 end % pairs
