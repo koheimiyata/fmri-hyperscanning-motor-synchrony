@@ -29,8 +29,9 @@ The scripts assume the following directory structure:
 └── Analysis/
     ├── Group/
     │   ├── InterBrain/
-    │   │   └── CPM/               # 4D NIfTI files for CPM analysis
-    │   └── OneT/                  # Second-level SPM results
+    │   │   ├── CPM/               # 4D NIfTI files for CPM analysis
+    │   │   └── OneT/                  # Second-level SPM results
+    │   └── batch/                 # Saved SPM batch files
     ├── Mat_file/                  # Intermediate .mat files
     │   └── CPM/
     ├── Mfile/                     # Analysis scripts (this repository)
@@ -71,6 +72,13 @@ Scripts are prefixed with a letter indicating the analysis stage and should be r
 | `P3_SaveConfoundsAsMat.m` | Extract confound regressors from fMRIPrep TSV files; save as `.txt` and `.mat` |
 | `P4_Smooth.m` | Apply spatial smoothing (5 mm FWHM Gaussian kernel) using SPM |
 
+### B — Behavioral Regressors
+
+| Script | Description |
+|--------|-------------|
+| `B1_RelativePhase.m` | Compute relative phase angle and Synchronization Index for real and pseudo pairs |
+| `B2_HRFConvolution.m` | Downsample behavioral signals to 1 Hz, convolve with HRF, and remove common HRF bias |
+
 ### C — Connectome-based Predictive Modeling (CPM)
 
 | Script | Description |
@@ -100,6 +108,10 @@ P1_fMRIPrep2SPM
   → P3_SaveConfoundsAsMat
   → P4_Smooth
 
+[Behavioral regressors]
+B1_RelativePhase
+  → B2_HRFConvolution
+
 [CPM analysis]
 C1_FLevel_CPM
   → C2_ResidT2F
@@ -115,6 +127,19 @@ G1_FLevel_GLM
 
 ---
 
+## Data
+
+The following behavioral data files are included in `Mat_file/`:
+
+| File | Variable | Description |
+|------|----------|-------------|
+| `FingerTip_theta.mat` | `FingerTip` | Finger-tip angle time series (theta) estimated from DeepLabCut tracking, manually verified. Structure: `FingerTip.(pair).(sub).(run).theta` |
+| `MotionEnergy.mat` | `MEA` | Motion Energy Analysis time series at 30 Hz. Structure: `MEA.(pair).(sub).(run).RAW` |
+| `SynchronyMetrics.mat` | `Synchrony` | Synchronization Index and mean relative phase for real and pseudo pairs. Output of `B1_RelativePhase.m` |
+| `HRF_Convolution.mat` | `HRF_Convolution` | HRF-convolved behavioral regressors for GLM. Output of `B2_HRFConvolution.m` |
+
+---
+
 ## Notes
 
 - Pair IDs P01 and P19 are excluded from the analysis (see manuscript for details).
@@ -122,14 +147,13 @@ G1_FLevel_GLM
 - All scripts use relative paths based on the `Analysis/Mfile/` working directory. Before running, set the MATLAB working directory to `Analysis/Mfile/`.
 - Helper functions (`Functions/`) are added to the MATLAB path at the start of scripts that require them via `addpath(fullfile(pwd, 'Functions'))`.
 
-
 ---
 
 ## Citation
 
 If you use this code, please cite:
 
-> [Authors]. ([Year]). [Title]. [Journal]. [DOI]
+> Miyata K, Koike T, Tsuchimoto S, Ogasawara K, Tanabe HC, Sadato N & Kudo K. ([Year]). Inter-brain networks underlying interpersonal motor synchrony during real-time interaction. [Journal]. [DOI]
 
 This code is partially based on:
 
@@ -139,5 +163,6 @@ This code is partially based on:
 
 ## License
 
-This code is released under the [MIT License](LICENSE).
-Portions based on Finn & Shen (2015) are released under the GNU GPL v2 (see individual script headers).
+This code is released under the GNU General Public License v2 (GPL v2),
+consistent with the CPM code by Finn & Shen (2015) on which portions of
+this work are based (see `C4_Permutation_CPM.m` and `Functions/predict_behavior.m`).
