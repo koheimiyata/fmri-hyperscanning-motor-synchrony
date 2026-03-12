@@ -158,7 +158,7 @@ If you use this code, please cite:
 This code is partially based on:
 
 > Shen X, Finn ES, Scheinost D, Rosenberg MD, Chun MM, Papademetris X & Constable RT. (2017). Using connectome-based predictive modeling to 
-predict individual behavior from brain connectivity. *Nature Protocols*, 12, 3, 506–518.
+predict individual behavior from brain connectivity. *Nature Protocols*, 12(3), 506–518.
 
 ---
 
