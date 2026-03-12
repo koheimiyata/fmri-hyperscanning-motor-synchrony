@@ -30,7 +30,7 @@ The scripts assume the following directory structure:
     ├── Group/
     │   ├── InterBrain/
     │   │   ├── CPM/               # 4D NIfTI files for CPM analysis
-    │   │   └── OneT/                  # Second-level SPM results
+    │   │   └── OneT/              # Second-level SPM results
     │   └── batch/                 # Saved SPM batch files
     ├── Mat_file/                  # Intermediate .mat files
     │   └── CPM/
