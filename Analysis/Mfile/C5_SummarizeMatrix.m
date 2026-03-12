@@ -93,12 +93,12 @@ title('Scaled Edge Ratio (S)')
 within  = meanS(1:10,1:10);
 between = meanS(11:20,1:10);
 
-writematrix(within,'wMatrix.csv')
-writematrix(between,'bMatrix.csv')
+writematrix(within,'../wMatrix.csv')
+writematrix(between,'../bMatrix.csv')
 
 c_stability = sum(S >= 1, 3);
 stability = c_stability/nIter;
 
 sig_S = stability >= thrsh;
 sig_contri = meanS.*sig_S;
-writematrix(sig_contri,['ContributionMatrix_' num2str(thrsh) '.csv'])
+writematrix(sig_contri,['../ContributionMatrix_' num2str(thrsh) '.csv'])
