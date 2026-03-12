@@ -84,17 +84,17 @@ Neg_rs(1) = true_prediction_r_neg;
 
 save(fullfile('..', 'Mat_file/', 'true_PM.mat'), 'true_PM')
 
-% % create estimate distribution of the test statistic via random shuffles of data lables   
-% parfor it = 2:no_iterations
-%     fprintf('\n Performing iteration %d out of %d', it, no_iterations);
-%     new_behav = all_behav(randperm(no_pairs));
-%     [Pos_rs(it), Neg_rs(it), ~, ~] = predict_behavior(all_mats, new_behav, thresh, num_roi, 2, constrain_flag);    
-% end
-% 
-% sorted_prediction_r_pos = sort(Pos_rs,'descend');
-% position_pos            = find(sorted_prediction_r_pos == true_prediction_r_pos);
-% pval_pos                = position_pos/no_iterations;
-% 
-% sorted_prediction_r_neg = sort(Neg_rs,'descend');
-% position_neg            = find(sorted_prediction_r_neg == true_prediction_r_neg);
-% pval_neg                = position_neg(1)/no_iterations;
+% create estimate distribution of the test statistic via random shuffles of data lables   
+parfor it = 2:no_iterations
+    fprintf('\n Performing iteration %d out of %d', it, no_iterations);
+    new_behav = all_behav(randperm(no_pairs));
+    [Pos_rs(it), Neg_rs(it), ~, ~] = predict_behavior(all_mats, new_behav, thresh, num_roi, 2, constrain_flag);    
+end
+
+sorted_prediction_r_pos = sort(Pos_rs,'descend');
+position_pos            = find(sorted_prediction_r_pos == true_prediction_r_pos);
+pval_pos                = position_pos/no_iterations;
+
+sorted_prediction_r_neg = sort(Neg_rs,'descend');
+position_neg            = find(sorted_prediction_r_neg == true_prediction_r_neg);
+pval_neg                = position_neg(1)/no_iterations;
