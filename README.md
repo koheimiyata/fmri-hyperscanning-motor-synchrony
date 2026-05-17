@@ -69,12 +69,6 @@ Scripts are prefixed with a letter indicating the analysis stage and should be r
 | `P2_Discard_initialFiles.m` | Move the first 3 volumes of each run to a `discarded/` subfolder (T1 equilibration) |
 | `P3_SaveConfoundsAsMat.m` | Extract confound regressors from fMRIPrep TSV files; save as `.txt` and `.mat` |
  
-### B — Behavioral Regressors
- 
-| Script | Description |
-|--------|-------------|
-| `B1_RelativePhase.m` | Compute relative phase angle and Synchronization Index (SI) for real and pseudo pairs |
- 
 ### C — Connectome-based Predictive Modeling (CPM)
  
 | Script | Description |
@@ -99,9 +93,6 @@ P1_fMRIPrep2SPM
   → P2_Discard_initialFiles
   → P3_SaveConfoundsAsMat
  
-[Behavioral regressors]
-B1_RelativePhase
- 
 [CPM analysis]
 C1_FLevel_CPM
   → C2_ResidT2F
@@ -124,9 +115,7 @@ The following behavioral data files are included in `Mat_file/`:
  
 | File | Variable | Description |
 |------|----------|-------------|
-| `FingerTip_theta.mat` | `FingerTip` | Finger-tip angle time series (theta) estimated from DeepLabCut tracking, manually verified. Structure: `FingerTip.(pair).(sub).(run).theta` |
-| `MotionEnergy.mat` | `MEA` | Motion Energy Analysis time series at 30 Hz. Structure: `MEA.(pair).(sub).(run).RAW` |
-| `SynchronyMetrics.mat` | `Synchrony` | Synchronization Index and mean relative phase for real and pseudo pairs. Output of `B1_RelativePhase.m` |
+| `SynchronyMetrics.mat` | `Synchrony` | Synchronization Index and mean relative phase for real and pseudo pairs. |
  
 ---
  
@@ -136,7 +125,7 @@ The following behavioral data files are included in `Mat_file/`:
 - The prefix `R` in run names (`R1st`, `R2nd`) denotes the circle-drawing task runs, distinguishing them from other tasks in this project.
 - All scripts use relative paths based on the `Analysis/Mfile/` working directory. Before running, set the MATLAB working directory to `Analysis/Mfile/`.
 - Helper functions (`Functions/`) are added to the MATLAB path at the start of scripts that require them via `addpath(fullfile(pwd, 'Functions'))`.
-- CPM performance is evaluated using Pearson's r and prediction q² (cross-validated R²) following Yoo et al. (2022).
+- CPM performance is evaluated using Pearson's r and prediction q² (cross-validated R²).
 ---
  
 ## Citation
@@ -148,9 +137,7 @@ If you use this code, please cite:
 This code is partially based on:
  
 > Shen X, Finn ES, Scheinost D, Rosenberg MD, Chun MM, Papademetris X & Constable RT. (2017). Using connectome-based predictive modeling to predict individual behavior from brain connectivity. *Nature Protocols*, 12(3), 506–518.
- 
-> Yoo K, Rosenberg MD, Hsu WT, Zhang S, Li CR, Scheinost D, Constable RT & Chun MM. (2022). Modeling across-run variability in functional connectivity improves prediction of individual traits. *Nature Human Behaviour*, 6, 1397–1411.
- 
+
 ---
  
 ## License
